@@ -65,6 +65,10 @@ class EmptyStateView: NibView {
         actionButton?(sender)
     }
     
+    @objc func tapClickHandler(){
+        actionButton?(self.primaryButton)
+    }
+    
     override func commonInit() {
         super.commonInit()
         setupView()
@@ -107,6 +111,8 @@ extension EmptyStateView {
         } else {
             primaryButton.isHidden = true
         }
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapClickHandler))
+        self.messageView.addGestureRecognizer(tapGesture)
     }
     
     private func updateUI() {
